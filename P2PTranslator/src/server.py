@@ -28,12 +28,11 @@ class Server():
                 answer = self.get_program(message)
                 connection.sendall(bytes(str(answer), "utf-8"))
             elif command == "send":
-                port: bytes = configReader.c_server["port2"]
+                port: int = configReader.c_server["port2"]
                 address = configReader.c_server["address2"]
                 try:
-                    self.server_socket.connect((address, port))
-                    self.server_socket.setblocking(0)
-                    connection.send(bytes('test', "utf-8"))
+                    con_instance = socket.create_connection((address, port))
+                    con_instance.send(bytes('test', "utf-8"))
                     print("Connected successfully")
                 except:
                     print("Error")

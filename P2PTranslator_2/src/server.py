@@ -5,7 +5,7 @@ from src.configReader import configReader
 class Server():
 
     def __init__(self):
-        self.word_dictionary = {"apple": "jablko", "car": "auto", "year": "rok", "water": "voda", "glass": "sklo"}
+        self.word_dictionary = {"pear": "hruska", "ball": "míč", "month": "měsíc", "tree": "strom", "iron": "železo"}
         self.server_addr = None
         self.server_socket = None
         self.client_address = None
