@@ -1,0 +1,13 @@
+2023-02-20 00:30:01,674 | INFO | Server started at ip 127.0.0.1:49677
+2023-02-20 00:30:06,808 | INFO | Client connected from 127.0.0.1:57071
+2023-02-20 00:30:14,053 | INFO | Command received, command: TRANSLATESCAN"ball"
+2023-02-20 00:30:14,053 | INFO | Could not connect to peer: 127.0.0.1:1234
+2023-02-20 00:30:14,053 | INFO | Could not connect to peer: 127.0.0.1:1578
+2023-02-20 00:30:14,053 | INFO | Could not connect to peer: 127.0.0.1:49789
+2023-02-20 00:30:14,053 | INFO | Could not connect to peer: 127.0.0.1:49678
+2023-02-20 00:30:14,053 | INFO | Could not connect to peer: 192.168.100.2:49677
+2023-02-20 00:30:14,054 | INFO | Could not connect to peer: 192.168.100.2:1234
+2023-02-20 00:30:14,054 | INFO | Could not connect to peer: 192.168.100.2:1578
+2023-02-20 00:30:14,054 | INFO | Could not connect to peer: 192.168.100.2:49789
+2023-02-20 00:30:14,054 | INFO | Could not connect to peer: 192.168.100.2:49678
+2023-02-20 00:30:14,054 | INFO | Answer sent, answer: TRANSLATEDERR"nenalezeno ball"
