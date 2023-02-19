@@ -1,4 +1,4 @@
-import socket, re
+import socket, re, time
 import threading
 from src.configReader import configReader
 
@@ -23,10 +23,14 @@ class Server():
                 message = command[14:-1]
                 answer = self.get_translation(message)
                 connection.send(bytes(answer, "utf-8"))
+                print(command)
+                print(answer)
             elif re.match("^((TRANSLATEPING)(\"[^\"\r\n]*\"))$", command) != None:
                 message = command[14:-1]
                 answer = self.get_program(message)
                 connection.send(bytes(answer, "utf-8"))
+                print(command)
+                print(answer)
             elif command == "test":
                 connection.sendall(bytes("test", "utf-8"))
                 print("test successful")
