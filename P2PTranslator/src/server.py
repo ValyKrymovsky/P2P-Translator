@@ -26,6 +26,8 @@ class Server():
             data = connection.recv(4096).decode()
             if not data:
                 log.info("Client connection was closed at %s:%d" % (client_addr[0], client_addr[1]))
+                connection.shutdown(0)
+                connection.close()
                 break
             command = data
 
@@ -92,6 +94,7 @@ class Server():
                                     log.info("Translation was not found at peer: %s:%d" % (server_connection.getpeername()[0], server_connection.getpeername()[1]))
                                     log.info("Closing connection: %s" % (server_connection.getpeername(),))
                                     print(str(server_connection) + " connection closed\r\n")
+                                    server_connection.shutdown(0)
                                     server_connection.close()
 
                         except:
@@ -106,6 +109,7 @@ class Server():
                 if self_scanned == False:
                     print(str(server_connection) + " connection closed\r\n")
                     log.info("Closing last connection for safety measures, connection: %s:%d" % (server_connection.getpeername()[0], server_connection.getpeername()[1]))
+                    server_connection.shutdown(0)
                     server_connection.close()
 
             elif command == "\r\n":
@@ -123,8 +127,6 @@ class Server():
             self.hostname = socket.gethostname()
 
 
-
-
             print("Server start on " + str(self.server_addr[0]) + ":" + str(self.server_addr[1]))
             log.info("Server started at ip %s:%d" % (self.server_socket.getsockname()[0], self.server_socket.getsockname()[1]))
 
@@ -138,12 +140,11 @@ class Server():
                 client_thread = threading.Thread(target=self.command_listener, args=(connection, client_address))
                 client_thread.start()
 
-
-
-
         finally:
+            connection.shutdown(0)
             connection.close()
 
+            self.server_socket.shutdown(0)
             self.server_socket.close()
 
     def get_translation(self, word: str):
@@ -157,9 +158,11 @@ class Server():
 
     def close_server(self, con):
         log.info("Client connection closed")
+        con.shutdown(0)
         con.close()
 
         log.info("Server closed")
+        self.server_socket.shutdown(0)
         self.server_socket.close()
 
 
